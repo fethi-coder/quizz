@@ -1,0 +1,54 @@
+section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    position: fixed;
+    top: 10px;
+    left: 120px;
+    width: 900px;
+}
+
+.tre {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    top: 10%;
+    left: 50%;
+    border-radius: 6px;
+    background-color: rgb(21, 129, 224);
+}
+
+.container-reponse {
+    position: absolute;
+    top: 130px;
+    right: -45px;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 9px;
+}
+
+input {
+    width: 300px;
+    height: 23%;
+    border: solid 2px black;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.submit {
+    width: 67px;
+    height: 23%;
+    background-color: rgb(112, 164, 242);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

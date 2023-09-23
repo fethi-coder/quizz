@@ -1,0 +1,10 @@
+<section>
+    <img src="assets/images/carte-1.png" alt="carte">
+    <div class="tre"></div>
+    <div class="container-reponse">
+        <input type="text" name="reponse" [(ngModel)]="name">
+        <button class="submit" (click)="reponse(name)">test</button>
+    </div>
+</section>
+<app-good *ngIf="good" (newItemEvent)="addItem($event)"></app-good>
+<app-bad *ngIf="bad" (newItemEventBad)="addItemBad($event)"></app-bad>
