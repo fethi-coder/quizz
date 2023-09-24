@@ -7,26 +7,17 @@ section {
 }
 
 img {
+    z-index: 0;
     position: fixed;
     top: 10px;
     left: 120px;
     width: 900px;
 }
 
-.tre {
-    position: absolute;
-    height: 12px;
-    width: 12px;
-    top: 10%;
-    left: 50%;
-    border-radius: 6px;
-    background-color: rgb(21, 129, 224);
-}
-
 .container-reponse {
     position: absolute;
     top: 130px;
-    right: -45px;
+    left: 800px;
     height: 200px;
     width: 400px;
     display: flex;
@@ -48,6 +39,44 @@ input {
     width: 67px;
     height: 23%;
     background-color: rgb(112, 164, 242);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.submit:active {
+    transform: translateX(2px);
+}
+
+.isResponse {
+    position: fixed;
+    height: 19px;
+    width: 19px;
+    border-radius: 9px;
+    border: solid 2px rgb(110, 110, 234);
+    background-color: rgb(255, 192, 192);
+}
+
+.container-player {
+    width: 200px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-player input {
+    position: relative;
+    height: 45px;
+    border: solid 3px black;
+}
+
+.btn-player {
+    margin-top: 4px;
+    width: 67px;
+    height: 45px;
+    background-color: rgb(195, 82, 233);
     border: none;
     border-radius: 3px;
     cursor: pointer;

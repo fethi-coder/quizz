@@ -11,14 +11,15 @@ import { CommonModule } from '@angular/common';
 export class BadComponent implements OnInit{
 
   @Output() newItemEventBad = new EventEmitter<string>();
+  iSbad: string = "";
 
   ngOnInit(): void {
   this.addNewItem()
   }
 
   addNewItem() {
-    let iSbad = "false"
-    this.newItemEventBad.emit(iSbad);
+    this.iSbad = "false"
+    this.newItemEventBad.emit(this.iSbad);
   }
 
 }

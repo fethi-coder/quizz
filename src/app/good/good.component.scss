@@ -21,7 +21,7 @@ p {
     text-decoration: solid 3px white;
     font-weight: bold;
     color: rgb(39, 225, 39);
-    animation: feu 1.4s infinite;
+    animation: feu 1.4s both;
 }
 
 @keyframes feu {

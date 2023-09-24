@@ -1,10 +1,27 @@
-<section>
-    <img src="assets/images/carte-1.png" alt="carte">
-    <div class="tre"></div>
+<section (click)="cursor($event)">
+    <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0">
     <div class="container-reponse">
         <input type="text" name="reponse" [(ngModel)]="name">
         <button class="submit" (click)="reponse(name)">test</button>
+        <ng-container *ngFor="let a of arrayPositionGare,let i = index">
+            <button [ngStyle]="{
+                position:'fixed',
+                left:(a.position_x-7)+'px',
+                top:(a.position_Y-7)+'px',
+                'height':19 +'px',
+                width: 19+'px',
+                'border-radius': 9+'px',
+                border: 'solid 2px rgb(110, 110, 234)',
+                'background-color': 'rgb(255, 192, 192)',
+            cursor:a.cursor}" (click)="isResponse(a.gare_station)"></button>
+        </ng-container>
+        <div class="container-player">
+            <label for="player">player</label>
+            <input type="text" name="player" id="" [(ngModel)]="player">
+            <button class="btn-player" (click)="playerRecord(player)">player save</button>
+        </div>
     </div>
+
 </section>
 <app-good *ngIf="good" (newItemEvent)="addItem($event)"></app-good>
 <app-bad *ngIf="bad" (newItemEventBad)="addItemBad($event)"></app-bad>
