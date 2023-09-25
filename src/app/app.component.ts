@@ -106,7 +106,7 @@ export class AppComponent implements OnInit {
       sessionStorage.setItem('players', JSON.stringify(this.arrayPlayer))
       this.players = [sessionStorage.getItem('players')]
     }
-    this.player = ""
+     this.player = ""
   }
 }
 
