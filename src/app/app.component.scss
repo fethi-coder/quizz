@@ -14,12 +14,21 @@ img {
     width: 900px;
 }
 
+h1 {
+    z-index: 23;
+    position: fixed;
+    top: 12px;
+    left: 45%;
+}
+
 .container-reponse {
     position: absolute;
     top: 130px;
-    left: 800px;
-    height: 200px;
+    left: 1020px;
+    height: 300px;
     width: 400px;
+    background-color: rgb(224, 164, 164);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,17 +36,18 @@ img {
     gap: 9px;
 }
 
-input {
+.container-reponse input {
     width: 300px;
-    height: 23%;
-    border: solid 2px black;
-    border-radius: 3px;
+    height: 45px;
+    border: solid 3px black;
+    border-radius: 12px;
     text-align: center;
+    gap: 5px;
 }
 
 .submit {
     width: 67px;
-    height: 23%;
+    height: 45px;
     background-color: rgb(112, 164, 242);
     border: none;
     border-radius: 3px;
@@ -66,6 +76,54 @@ input {
     flex-direction: column;
 }
 
+.container-list-player {
+    position: fixed;
+    top: 450px;
+    left: 1020px;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.container-list-player ul {
+    text-decoration: none;
+    list-style: none;
+    font-size: 2rem;
+    font-family: sans-serif;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+li {
+    width: 100%;
+    opacity: 0;
+    text-align: center;
+    animation: player both .4s;
+}
+
+@keyframes player {
+    from {
+        opacity: 0;
+        scale: 0;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.container-list-player p {
+    width: 400px;
+    color: white;
+    background-color: rgb(69, 148, 119);
+    border-radius: 5px;
+}
+
 .container-player input {
     position: relative;
     height: 45px;
@@ -80,4 +138,8 @@ input {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.btn-psoition:active {
+    transform: translateX(-2px);
 }

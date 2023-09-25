@@ -1,25 +1,36 @@
 <section (click)="cursor($event)">
+    <h1>{{playerActive}}</h1>
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0">
+
+
     <div class="container-reponse">
         <input type="text" name="reponse" [(ngModel)]="name">
-        <button class="submit" (click)="reponse(name)">test</button>
+        <button class="submit" (click)="reponse(name)">valider la réponse</button>
         <ng-container *ngFor="let a of arrayPositionGare,let i = index">
             <button [ngStyle]="{
-                position:'fixed',
-                left:(a.position_x-7)+'px',
-                top:(a.position_Y-7)+'px',
-                'height':19 +'px',
-                width: 19+'px',
-                'border-radius': 9+'px',
-                border: 'solid 2px rgb(110, 110, 234)',
-                'background-color': 'rgb(255, 192, 192)',
-            cursor:a.cursor}" (click)="isResponse(a.gare_station)"></button>
+                    position:'fixed',
+                    left:(a.position_x-7)+'px',
+                    top:(a.position_Y-7)+'px',
+                    'height':19 +'px',
+                    width: 19+'px',
+                    'border-radius': 9+'px',
+                    border: 'solid 2px rgb(110, 110, 234)',
+                    'background-color': 'rgb(255, 192, 192)',
+                cursor:a.cursor}" (click)="isResponse(a.gare_station,i)" class="btn-psoition"></button>
         </ng-container>
         <div class="container-player">
-            <label for="player">player</label>
+            <label for="player">joueurs</label>
             <input type="text" name="player" id="" [(ngModel)]="player">
             <button class="btn-player" (click)="playerRecord(player)">player save</button>
         </div>
+    </div>
+    <div class="container-list-player">
+
+        <ul *ngFor="let a of arrayPlayer">
+            <li>{{a.name}}
+                <p>score : {{a.point}}</p>
+            </li>
+        </ul>
     </div>
 
 </section>
