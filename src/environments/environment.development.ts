@@ -109,5 +109,9 @@ export const environment = {
         { position_x: 787, position_Y: 665, gare_station: "", cursor: "pointer" },
         { position_x: 795, position_Y: 741, gare_station: "", cursor: "pointer" },
         { position_x: 785, position_Y: 739, gare_station: "", cursor: "pointer" },
-    ]
+    ],
+
+   
+
+
 }

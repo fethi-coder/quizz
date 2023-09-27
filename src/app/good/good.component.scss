@@ -12,44 +12,49 @@ section {
 }
 
 p {
-    position: fixed;
+    position: absolute;
     opacity: 0;
-    top: 50%;
-    left: 30%;
+    top: 30%;
+    left: 0%;
+    width: 100%;
     font-size: 4rem;
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: solid 3px white;
     font-weight: bold;
-    color: rgb(39, 225, 39);
+    color: rgb(135, 232, 135);
     animation: feu 1.4s both;
 }
 
 @keyframes feu {
     0% {
         opacity: .3;
-        top: 50%;
-        left: 30%;
+        top: 30%;
+        left: 0%;
         color: rgb(39, 225, 39);
         font-size: 4rem;
+        text-align: center;
     }
     50% {
-        top: 50%;
-        left: 15%;
+        top: 30%;
+        left: 0%;
         opacity: 1;
         color: rgb(123, 39, 225);
-        font-size: 12rem;
+        font-size: 7rem;
+        text-align: center;
     }
     100% {
-        top: 50%;
-        left: 30%;
-        opacity: .3;
-        color: rgb(242, 255, 62);
-        font-size: 4rem;
+        top: 30%;
+        left: 0%;
+        opacity: 1;
+        color: rgb(43, 11, 112);
+        font-size: 10rem;
+        text-align: center;
     }
 }
 
 .btn-good {
     position: absolute;
+    z-index: 23;
     width: 180px;
     height: 45px;
     top: 5%;

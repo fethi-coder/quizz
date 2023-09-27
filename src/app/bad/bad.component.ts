@@ -1,25 +1,38 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
+import { environment } from 'src/environments/environment.development';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bad',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgFor],
   templateUrl: './bad.component.html',
   styleUrls: ['./bad.component.scss']
 })
-export class BadComponent implements OnInit{
+export class BadComponent implements OnInit {
+  gif: string = ''
 
-  @Output() newItemEventBad = new EventEmitter<string>();
-  iSbad: string = "";
+
+  @Output() newItemEventBad = new EventEmitter<any>();
+  iSbad: String = "";
+
+  @Input() gifPush:any
+  close: boolean = true;
 
   ngOnInit(): void {
-  this.addNewItem()
+    this.gifRandom()
+    setInterval(() => { this.close = false }, 3500)
+    
+    
   }
 
   addNewItem() {
-    this.iSbad = "false"
-    this.newItemEventBad.emit(this.iSbad);
+    let iSbad = "false"
+    this.newItemEventBad.emit(iSbad);
+  }
+
+  gifRandom() {
   }
 
 }

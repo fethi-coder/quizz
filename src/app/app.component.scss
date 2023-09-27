@@ -27,13 +27,16 @@ h1 {
     left: 1020px;
     height: 300px;
     width: 400px;
-    background-color: rgb(224, 164, 164);
+    background-color: #e6adad;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 9px;
+    gap: 13px;
+    border-radius: 50px;
+    background: #e6adad;
+    box-shadow: 5px 5px 4px #cfcece, -5px -5px 4px #ffffff;
 }
 
 .container-reponse input {
@@ -68,12 +71,13 @@ h1 {
 }
 
 .container-player {
-    width: 200px;
-    height: 90px;
+    width: 300px;
+    height: 149px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 12px;
 }
 
 .container-list-player {
@@ -87,6 +91,9 @@ h1 {
     justify-content: center;
     flex-direction: column;
     text-decoration: none;
+    border-radius: 50px;
+    background: #e6adad;
+    box-shadow: 5px 5px 4px #cfcece, -5px -5px 4px #ffffff;
 }
 
 .container-list-player ul {
@@ -118,9 +125,10 @@ li {
 }
 
 .container-list-player p {
-    width: 400px;
+    width: 380px;
     color: white;
-    background-color: rgb(69, 148, 119);
+    background-color: rgb(94, 132, 221);
+    font-weight: 800;
     border-radius: 5px;
 }
 

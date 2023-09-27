@@ -1,12 +1,12 @@
-import { Component, OnInit, ApplicationConfig } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GoodComponent } from './good/good.component';
 import { BadComponent } from './bad/bad.component';
 import { environment } from 'src/environments/environment';
-import { PlayerModel } from 'src/model/player.model';
-import { Player } from 'src/model/player';
+import { ListPlayer, Player } from 'src/model/player';
 import { Position, PositionModel } from 'src/model/position';
+
 
 
 @Component({
@@ -19,7 +19,7 @@ import { Position, PositionModel } from 'src/model/position';
 export class AppComponent implements OnInit {
 
   title = 'quizz';
-  name: any = ""
+  name: any = ''
   good?: boolean = false
   bad?: boolean = false;
   screenLog: any
@@ -34,7 +34,21 @@ export class AppComponent implements OnInit {
   arrayPlayer: Player[] = [];
   score: number = 0;
   indexPlayer: number = 0;
-  playerActive: string | undefined;
+  playerActive: any;
+  arrayGif: any[] = [
+    "assets/images/Aneu.gif",
+    "assets/images/giphy.gif",
+    "assets/images/nope-pic-4.gif.webp",
+    "assets/images/Aneu.gif",
+    "assets/images/nope-pic-8.gif.webp"
+  ]
+  gifPush: any
+  playerPush: any
+  listplayer: Player[] = [];
+  numPoint: number = 0;
+  namePlayer: any[] = [];
+  index: number = 0;
+  nameActive: any = '';
 
 
   ngOnInit(): void {
@@ -42,34 +56,10 @@ export class AppComponent implements OnInit {
     this.arrayPositionGare = environment.arrayGare
     this.playerRecord
     this.players = []
-    this.playerActive = this.arrayPlayer[this.indexPlayer-1].name
-  }
-
-  reponse(event: any) {
-    if (event === this.propResponse) {
-      this.good = true
-      this.name = ''
-      if (this.indexPlayer >= 0 && this.indexPlayer <= this.arrayPlayer.length - 1) {
-        let num: any = 0
-        num = this.arrayPlayer[this.indexPlayer].point
-        this.score = num
-        this.arrayPlayer[this.indexPlayer].point = ++this.score
-        this.playerActive = this.arrayPlayer[this.indexPlayer].name
-        sessionStorage.setItem('players', JSON.stringify(this.arrayPlayer))
-        this.indexPlayer++
-      } else {
-        this.indexPlayer = this.indexPlayer - this.arrayPlayer.length
-        this.arrayPlayer[this.indexPlayer].point = ++this.score
-        sessionStorage.setItem('players', JSON.stringify(this.arrayPlayer))
-        this.indexPlayer++
-      }
-      setTimeout(() => { this.good = !this.good }, 500)
-    } else {
-      this.bad = true
-      this.name = ''
-        this.indexPlayer++
-      setTimeout(() => { this.bad = !this.bad }, 500)
-    }
+    this.playerActive
+    this.gifIndex
+    setInterval(() => { this.gifIndex() }, 6000)
+    this.countIndex
   }
 
   addItem(newItem: string) {
@@ -85,7 +75,6 @@ export class AppComponent implements OnInit {
     };
   }
 
-
   cursor(event: any) {
     sessionStorage.setItem('', '')
     this.posX = event.clientX
@@ -100,13 +89,48 @@ export class AppComponent implements OnInit {
   }
 
   playerRecord(eventNamePlayer: any) {
-    let tre = new Player(eventNamePlayer, this.score)
-    this.arrayPlayer.push(tre)
-    if (this.arrayPlayer.length < 4 && this.player != "") {
-      sessionStorage.setItem('players', JSON.stringify(this.arrayPlayer))
-      this.players = [sessionStorage.getItem('players')]
+    if (eventNamePlayer != '') {
+      this.namePlayer.push(eventNamePlayer)
+      let player: any = new Player(eventNamePlayer, this.score)
+      this.listplayer?.push(player)
+    } else {
+      alert('faut remplir les champs mecs !!!')
     }
-     this.player = ""
+    this.player = ''
+  }
+
+  gifIndex() {
+    let max = 4
+    this.gifPush = String(this.arrayGif[Math.floor(Math.random() * max)])
+    return this.gifPush
+  }
+
+
+  countIndex() {
+      if (this.listplayer?.length - 1 >= this.index) {
+        this.nameActive = this.namePlayer[this.index]
+      } else {
+        this.index = 0
+        this.nameActive = this.namePlayer[this.index]
+      }
+      this.name = this.nameActive
+    this.playerPush = this.nameActive
+    this.index++
+  }
+
+  reponse(event: any) {
+    console.log(event);
+    
+    if (event === this.propResponse) {
+      this.good = true
+      setTimeout(() => { this.listplayer?.map(a => a.name == this.nameActive ?
+         ({ ...new Player(a.name, a.point++) })
+       : { ...new Player(a.name, a.point) }) }
+       ,200)
+    } else {
+      this.bad = true
+    }
+    this.name = ''
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,10 +8,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './good.component.html',
   styleUrls: ['./good.component.scss']
 })
-export class GoodComponent {
+export class GoodComponent implements OnInit{
+ 
   text:string="bonne réponse"
+  close:boolean = true
 
   @Output() newItemEvent = new EventEmitter<string>();
+  @Input() playerPush:any
+  session?: string | null;
+
+  ngOnInit(): void {
+    console.log(this.playerPush);
+    
+  }
+
 
   addNewItem() {
     let iSgood = "false"
