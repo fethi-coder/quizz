@@ -1,11 +1,11 @@
 <section (click)="cursor($event)">
-    <h1>joueur suivant : {{playerActive}}</h1>
+    <h1>joueur : {{playerPush}} {{propResponse}}</h1>
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0">
 
 
     <div class="container-reponse">
-        <input type="text" name="reponse" [(ngModel)]="name">
-        <button class="submit" (click)="reponse(name)" (click)="countIndex()">valider</button>
+        <input type="text" name="reponse" [value]="name" [(ngModel)]="name">
+        <button class="submit" (click)="reponse(name)" (click)="countIndex()">réponse</button>
         <ng-container *ngFor="let a of arrayPositionGare,let i = index">
             <button [ngStyle]="{
                     position:'fixed',
@@ -21,14 +21,14 @@
         <div class="container-player">
             <label for="player">joueurs</label>
             <input type="text" name="player" id="" [(ngModel)]="player">
-            <button class="btn-player" (click)="playerRecord(player)">player save</button>
+            <button class="submit" (click)="playerRecord(player)">valider joueur</button>
         </div>
     </div>
     <div class="container-list-player">
 
-        <ul *ngFor="let a of listplayer">
+        <ul *ngFor="let a of listplayer" class="score">
             <li>{{a.name}}
-                <p>score : {{a.point}}</p>
+                <p [ngStyle]="a.name === playerPush ?{color:'white',transition:'all .4s','font-family':'Fuggles, cursive;'} :{ color:'white',transition:'all .4s'}">score : {{a.point}}</p>
             </li>
         </ul>
     </div>

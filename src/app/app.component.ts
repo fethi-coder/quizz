@@ -76,12 +76,8 @@ export class AppComponent implements OnInit {
   }
 
   cursor(event: any) {
-    sessionStorage.setItem('', '')
-    this.posX = event.clientX
-    this.posY = event.clientY
-    let tre = new Position(event.clientX, event.clientY, '')
-    this.arraytre.push(tre)
-    sessionStorage.setItem('position', JSON.stringify(this.arraytre))
+    console.log(environment.arrayGare);
+  alert('position_x:'+event.x+','+ 'position_Y:'+event.y)
   }
 
   isResponse(event: string, index: number) {
@@ -113,24 +109,23 @@ export class AppComponent implements OnInit {
         this.index = 0
         this.nameActive = this.namePlayer[this.index]
       }
-      this.name = this.nameActive
     this.playerPush = this.nameActive
     this.index++
   }
 
   reponse(event: any) {
-    console.log(event);
-    
-    if (event === this.propResponse) {
+    if (event == this.propResponse) {
       this.good = true
       setTimeout(() => { this.listplayer?.map(a => a.name == this.nameActive ?
          ({ ...new Player(a.name, a.point++) })
-       : { ...new Player(a.name, a.point) }) }
+        : { ...new Player(a.name, a.point) }) }
        ,200)
+      this.name = ""
     } else {
       this.bad = true
+      this.name = ""
     }
-    this.name = ''
+    this.name = ""
   }
 }
 

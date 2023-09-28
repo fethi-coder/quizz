@@ -18,10 +18,8 @@ export class GoodComponent implements OnInit{
   session?: string | null;
 
   ngOnInit(): void {
-    console.log(this.playerPush);
-    
+    setInterval(() => { this.close = false }, 4000)
   }
-
 
   addNewItem() {
     let iSgood = "false"

@@ -12,7 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class BadComponent implements OnInit {
   gif: string = ''
-
+  session:any
 
   @Output() newItemEventBad = new EventEmitter<any>();
   iSbad: String = "";
@@ -21,18 +21,12 @@ export class BadComponent implements OnInit {
   close: boolean = true;
 
   ngOnInit(): void {
-    this.gifRandom()
-    setInterval(() => { this.close = false }, 3500)
-    
-    
+    setInterval(() => { this.close = false }, 4000)
   }
 
   addNewItem() {
     let iSbad = "false"
     this.newItemEventBad.emit(iSbad);
-  }
-
-  gifRandom() {
   }
 
 }
