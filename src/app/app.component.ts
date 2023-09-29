@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { CommonModule, NgFor } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { GoodComponent } from "./good/good.component";
@@ -59,6 +59,9 @@ export class AppComponent implements OnInit {
   gif: string = "";
   gifFalse: boolean = false;
   startGame?: boolean = false;
+  X: any;
+  Y: any;
+  indexArray: any;
 
   ngOnInit(): void {
     this.listGif = [
@@ -75,7 +78,6 @@ export class AppComponent implements OnInit {
       { src: "assets/emoj/giphy.gif" },
     ];
 
-    this.cursor;
     this.arrayPositionGare = environment.arrayGare;
     this.playerRecord;
     this.players = [];
@@ -100,7 +102,15 @@ export class AppComponent implements OnInit {
     }
   }
 
-  cursor(event: any) {}
+  @HostListener('mousemove', ['$event']) onMouseMove(event: { clientX: any; clientY: any; }) {
+    console.log(this.X = event.clientX,this.Y = event.clientY);
+for (const iterator of this.arrayPositionGare) {
+  if (this.Y == iterator.position_Y && this.X == iterator.position_x) {
+    this.indexArray = "position_x: " + iterator.position_x + ", " + "position_Y: " + iterator.position_Y
+  }
+  
+}
+  }
 
   isResponse(event: string) {
     this.propResponse = event;

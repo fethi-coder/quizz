@@ -1,8 +1,10 @@
-<section (click)="cursor($event)">
-
+<section>
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0" />
 
     <div class="container-reponse">
+        <p>position Y: {{Y}}</p>
+        <p>position X: {{X}}</p>
+        <p>{{indexArray}}</p>
         <div class="container-player">
             <div class="container-gif" *ngIf="!startGame">
                 <ul *ngFor="let gif of listGif">
