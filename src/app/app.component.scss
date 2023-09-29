@@ -302,9 +302,10 @@
         }
         
         .container-btn-restart {
+            display: none;
             position: absolute;
             display: flex;
-            align-items: center;
+            align-items: start;
             justify-content: center;
             top: 12px;
             width: 100%;
@@ -312,6 +313,9 @@
         }
         
         .container-btn-restart button {
+            position: absolute;
+            top: 45px;
+            left: 45px;
             height: 45px;
             width: 180px;
             border-radius: 2px;

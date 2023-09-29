@@ -1,13 +1,11 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { CommonModule, NgFor } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { GoodComponent } from "./good/good.component";
 import { BadComponent } from "./bad/bad.component";
 import { environment } from "src/environments/environment";
-import { ListPlayer, Player } from "src/model/player";
-import { Position, PositionModel } from "src/model/position";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Player } from "src/model/player";
+import { PositionModel } from "src/model/position";
 import { MatSelectModule } from "@angular/material/select";
 
 @Component({
@@ -19,7 +17,6 @@ import { MatSelectModule } from "@angular/material/select";
     GoodComponent,
     BadComponent,
     NgFor,
-    MatSelectModule,
   ],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
@@ -48,6 +45,7 @@ export class AppComponent implements OnInit {
     "assets/images/nope-pic-4.gif.webp",
     "assets/images/Aneu.gif",
     "assets/images/nope-pic-8.gif.webp",
+    "assets/emoj/train.gif"
   ];
   gifPush: any;
   playerPush: any;
@@ -106,6 +104,7 @@ export class AppComponent implements OnInit {
 
   isResponse(event: string) {
     this.propResponse = event;
+    this.startGame = true
   }
 
   gifPathSend(gifevent: string) {
@@ -113,14 +112,14 @@ export class AppComponent implements OnInit {
   }
 
   playerRecord(eventNamePlayer: any) {
-    if (eventNamePlayer != "") {
+    if (eventNamePlayer != "" && this.gif != '') {
       this.namePlayer.push(eventNamePlayer);
       let player: any = new Player(eventNamePlayer, this.score, this.gif);
       this.listplayer?.push(player);
       this.gif = "";
-      signal(this.gifFalse=true)
+      this.gifFalse = false
     } else {
-      signal(this.gifFalse = false)
+      this.gifFalse = false
     }
     this.player = "";
     this.gifFalse;
