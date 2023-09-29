@@ -18,6 +18,8 @@ export class GoodComponent implements OnInit{
   session?: string | null;
 
   ngOnInit(): void {
+    console.log("fdszfef");
+    
     setInterval(() => { this.close = false }, 4000)
   }
 

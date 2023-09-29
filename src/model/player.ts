@@ -3,9 +3,11 @@ import { PlayerModel } from "./player.model"
 export class Player {
     name: string = ''
     point: number = 0
-    constructor(name: string, point: number) {
+    gif:string =""
+    constructor(name: string, point: number,gif:string) {
         this.name = name
         this.point = point
+        this.gif = gif
     }
 }
 
