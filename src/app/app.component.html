@@ -4,7 +4,8 @@
     <div class="container-reponse">
         <p>position Y: {{Y}}</p>
         <p>position X: {{X}}</p>
-        <p>{{indexArray}}</p>
+        <p [ngStyle]="indexArray ? {color:'yellow',backgroundColor:'red'}:{color:'white'}">{{indexArray}}</p>
+        <p>lignes : {{line}}</p>
         <div class="container-player">
             <div class="container-gif" *ngIf="!startGame">
                 <ul *ngFor="let gif of listGif">

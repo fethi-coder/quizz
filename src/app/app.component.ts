@@ -62,6 +62,8 @@ export class AppComponent implements OnInit {
   X: any;
   Y: any;
   indexArray: any;
+  tre?: boolean = true;
+  line?:number
 
   ngOnInit(): void {
     this.listGif = [
@@ -103,13 +105,18 @@ export class AppComponent implements OnInit {
   }
 
   @HostListener('mousemove', ['$event']) onMouseMove(event: { clientX: any; clientY: any; }) {
-    console.log(this.X = event.clientX,this.Y = event.clientY);
-for (const iterator of this.arrayPositionGare) {
-  if (this.Y == iterator.position_Y && this.X == iterator.position_x) {
-    this.indexArray = "position_x: " + iterator.position_x + ", " + "position_Y: " + iterator.position_Y
-  }
-  
-}
+    console.log(this.X = event.clientX, this.Y = event.clientY);
+
+    for (const [iterator, i] of this.arrayPositionGare.entries()) {
+      if (this.Y == i.position_Y && this.X == i.position_x) {
+        this.indexArray = "position_x: " + i.position_x + ", " + "position_Y: " + i.position_Y
+        this.line = iterator + 2
+        this.tre = true
+      } else {
+        this.tre = false
+      }
+
+    }
   }
 
   isResponse(event: string) {
@@ -171,6 +178,6 @@ for (const iterator of this.arrayPositionGare) {
   }
 
   restart() {
-   window.location.reload()
+    window.location.reload()
   }
 }
