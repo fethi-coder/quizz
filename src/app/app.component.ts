@@ -1,11 +1,13 @@
+
 import { Component, HostListener, OnInit } from "@angular/core";
 import { CommonModule, NgFor } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { GoodComponent } from "./good/good.component";
 import { BadComponent } from "./bad/bad.component";
-import { environment } from "src/environments/environment";
 import { Player } from "src/model/player";
 import { PositionModel } from "src/model/position";
+import { environment } from "src/environments/environment";
+
 
 @Component({
   selector: "app-root",
@@ -67,7 +69,7 @@ export class AppComponent implements OnInit {
   gifCursor: string = '';
   cursor_X: any;
   cursor_Y: any;
-  doublon: boolean[] =[];
+  doublon: boolean[] = [];
 
   ngOnInit(): void {
     this.listGif = environment.listGif
@@ -99,13 +101,15 @@ export class AppComponent implements OnInit {
   @HostListener('mousemove', ['$event']) onMouseMove(event: { clientX: any; clientY: any; }) {
     this.X = event.clientX
     this.Y = event.clientY
-    this.cursor_X = event.clientX +23
-    this.cursor_Y = event.clientY +23
     this.tracker = this.X * this.Y - 119
+    let ineee = 0
     for (const [iterator, i] of this.arrayPositionGare.entries()) {
-      if (this.Y > i.position_Y && this.X > i.position_x) {
-        this.indexArray = "position_x: " + i.position_x + ", " + "position_Y: " + i.position_Y
-        this.line = iterator + 3
+      ++ineee
+      if (i.position_Y <= this.Y  && i.position_x <= this.X ) {
+       this.line = 0
+        this.indexArray = "position_x: " + i.position_x + ", " + "position_Y: " + i.position_Y  
+        this.line = iterator + 4
+        console.log(this.line);
         this.tre = true
       } else {
         this.tre = false
@@ -126,7 +130,7 @@ export class AppComponent implements OnInit {
   playerRecord(eventNamePlayer: any) {
     this.doublon = this.listplayer.map(a => a.name == eventNamePlayer)
     console.log(this.doublon);
-    
+
     if (eventNamePlayer != "" && this.gif != '' && !this.doublon[0]) {
       this.namePlayer.push(eventNamePlayer);
       let player: any = new Player(eventNamePlayer, this.score, this.gif);
@@ -166,8 +170,9 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         this.listplayer?.map((a) => {
           a.name == this.nameActive
-          ? { ...new Player(a.name, a.point++, a.gif) }
-          : { ...new Player(a.name, a.point, a.gif) }},this.gifCursor = this.gif
+            ? { ...new Player(a.name, a.point++, a.gif) }
+            : { ...new Player(a.name, a.point, a.gif) }
+        }, this.gifCursor = this.gif
         )
       }, 100);
       this.name = "";

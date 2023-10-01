@@ -1,4 +1,5 @@
 export const environment = {
+    environment: true,
     arrayGare: [
         { position_x: 136, position_Y: 409, gare_station: 'tre', cursor: 'pointer' },
         { position_x: 160, position_Y: 446, gare_station: 'tra', cursor: 'pointer' },
@@ -127,7 +128,8 @@ export const environment = {
         { position_x: 542, position_Y: 509, gare_station: "", cursor: "pointer" },
         { position_x: 574, position_Y: 535, gare_station: "", cursor: "pointer" },
         { position_x: 598, position_Y: 396, gare_station: "", cursor: "pointer" },
-        { position_x: 601, position_Y: 390, gare_station: "creil", cursor: "pointer" },
+        { position_x: 605, position_Y: 366, gare_station: "creil", cursor: "pointer" },
+        { position_x: 573, position_Y: 419, gare_station: "", cursor: "pointer" },
         { position_x: 552, position_Y: 231, gare_station: "boulogne", cursor: "pointer" },
         { position_x: 561, position_Y: 217, gare_station: "calais", cursor: "pointer" },
         { position_x: 573, position_Y: 200, gare_station: "dunkerque", cursor: "pointer" },
@@ -207,9 +209,8 @@ export const environment = {
         { position_x: 912, position_Y: 740, gare_station: "", cursor: "pointer" },
         { position_x: 908, position_Y: 767, gare_station: "", cursor: "pointer" },
         { position_x: 856, position_Y: 775, gare_station: "", cursor: "pointer" },
-        { position_x: 836, position_Y: 851, gare_station: "", cursor: "pointer" },
+        { position_x: 836, position_Y: 851, gare_station: "eee", cursor: "pointer" },
     ],
-
     listGif: [
         { src: "assets/emoj/8583-yoyomonkey-thinkinghard.gif" },
         { src: "assets/emoj/spongebob-pageflip.gif" },
@@ -222,5 +223,7 @@ export const environment = {
         { src: "assets/emoj/giphy2.gif" },
         { src: "assets/emoj/giphy3.gif" },
         { src: "assets/emoj/giphy.gif" },
+        { src: "assets/emoj/no.gif" },
+        { src: "assets/emoj/chaton.gif" }
     ]
-};
+}

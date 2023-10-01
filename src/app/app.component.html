@@ -2,7 +2,7 @@
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0" />
 
     <div class="container-reponse">
-        <img [ngStyle]="gifCursor !== '' ? {position:'fixed',height:'30px','width':'30px',left:cursor_X+'px',top:Y+'px',color:'yellow',backgroundColor:'black','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="">
+        <img [ngStyle]="gifCursor !== '' ? {position:'fixed',height:'30px','width':'30px',left:X+19+'px',top:Y+19+'px',color:'yellow',backgroundColor:'transparent','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="">
         <p>position Y: {{Y}}</p>
         <p>position X: {{X}}</p>
         <p [ngStyle]="indexArray ? {color:'yellow',backgroundColor:'red'}:{color:'white'}">{{indexArray}}</p>
