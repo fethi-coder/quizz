@@ -60,7 +60,7 @@
         
         .inputListPlayer {
             width: 300px;
-            height: 92px;
+            height: 42px;
             border: solid 3px black;
             border-radius: 12px;
             text-align: center;
@@ -147,13 +147,14 @@
             }
         }
         
-        .container-list-player ul {
+        .container-list-player ul li {
             text-decoration: none;
             list-style: none;
             font-size: 2rem;
+            text-align: center;
             font-family: sans-serif;
             justify-content: center;
-            flex-direction: column;
+            flex-direction: row;
             text-decoration: none;
         }
         
@@ -177,7 +178,6 @@
         
         .container-list-player p {
             width: 380px;
-            transform: translateX(-190px);
             color: white;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             background-color: rgb(198, 143, 104);
@@ -214,40 +214,36 @@
         
         .container-gif {
             height: 90px;
-            width: 90%;
-            overflow-Y: scroll;
-            scroll-behavior: smooth;
+            width: 360px;
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+            scroll-behavior: auto;
+            gap: 58px;
             transition: all .4s;
         }
         
-        .container-gif input {
-            width: 45px;
-            border: none;
+        .container-gif ul li {
+            height: 45px;
+            width: 3px;
+            list-style: none;
         }
         
         .container-gif ul {
-            width: 55px;
-            height: 42px;
-            gap: 12px;
-        }
-        
-        li {
-            height: 60px;
-            width: 0px;
-            text-decoration: none;
-            list-style: none;
-            gap: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            width: 100%;
         }
         
         .imgGif {
-            z-index: 23;
             width: 40px;
             border-radius: 5px;
             cursor: pointer;
         }
         
         .imgGifFalse {
-            z-index: 23;
             width: 40px;
             border-radius: 5px;
             cursor: pointer;
@@ -293,7 +289,9 @@
         }
         
         .btnGif {
+            width: 45px;
             border: none;
+            cursor: pointer;
         }
         
         .namePlayerGif {
@@ -334,4 +332,11 @@
         
         p {
             color: white;
+        }
+        
+        .imgGif2 {
+            height: 45px;
+            transform: translate(-210px);
+            object-fit: contain;
+            background-color: transparent;
         }

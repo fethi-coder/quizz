@@ -210,4 +210,19 @@ export const environment = {
         { position_x: 856, position_Y: 775, gare_station: "", cursor: "pointer" },
         { position_x: 836, position_Y: 851, gare_station: "", cursor: "pointer" },
     ],
+    listGif: [
+        { src: "assets/emoj/8583-yoyomonkey-thinkinghard.gif" },
+        { src: "assets/emoj/spongebob-pageflip.gif" },
+        { src: "assets/emoj/cicimonkey-blush.gif" },
+        { src: "assets/emoj/nyanparrot.gif" },
+        { src: "assets/emoj/MegurineLuka_Applause1.gif" },
+        { src: "assets/emoj/catgirlears.gif" },
+        { src: "assets/emoj/MegurineLuka_Applause1.gif" },
+        { src: "assets/emoj/giphy1.gif" },
+        { src: "assets/emoj/giphy2.gif" },
+        { src: "assets/emoj/giphy3.gif" },
+        { src: "assets/emoj/giphy.gif" },
+        { src:"assets/emoj/no.gif"},
+        { src:"assets/emoj/chaton.gif"}
+    ]
 }

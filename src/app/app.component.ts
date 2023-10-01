@@ -6,7 +6,6 @@ import { BadComponent } from "./bad/bad.component";
 import { environment } from "src/environments/environment";
 import { Player } from "src/model/player";
 import { PositionModel } from "src/model/position";
-import { MatSelectModule } from "@angular/material/select";
 
 @Component({
   selector: "app-root",
@@ -51,7 +50,7 @@ export class AppComponent implements OnInit {
   playerPush: any;
   listplayer: Player[] = [];
   numPoint: number = 0;
-  namePlayer: any[] = [];
+  namePlayer: Player[] = [];
   index: number = 0;
   nameActive: any = "";
   listGif: any[] = [];
@@ -63,22 +62,15 @@ export class AppComponent implements OnInit {
   Y: any;
   indexArray: any;
   tre?: boolean = true;
-  line?:number
+  line?: number
+  tracker: number = 0;
+  gifCursor: string = '';
+  cursor_X: any;
+  cursor_Y: any;
+  doublon: boolean[] =[];
 
   ngOnInit(): void {
-    this.listGif = [
-      { src: "assets/emoj/8583-yoyomonkey-thinkinghard.gif" },
-      { src: "assets/emoj/spongebob-pageflip.gif" },
-      { src: "assets/emoj/cicimonkey-blush.gif" },
-      { src: "assets/emoj/nyanparrot.gif" },
-      { src: "assets/emoj/MegurineLuka_Applause1.gif" },
-      { src: "assets/emoj/catgirlears.gif" },
-      { src: "assets/emoj/MegurineLuka_Applause1.gif" },
-      { src: "assets/emoj/giphy1.gif" },
-      { src: "assets/emoj/giphy2.gif" },
-      { src: "assets/emoj/giphy3.gif" },
-      { src: "assets/emoj/giphy.gif" },
-    ];
+    this.listGif = environment.listGif
 
     this.arrayPositionGare = environment.arrayGare;
     this.playerRecord;
@@ -86,7 +78,7 @@ export class AppComponent implements OnInit {
     this.playerActive;
     this.gifIndex;
     setInterval(() => {
-      this.gifIndex();
+      this.gifIndex()
     }, 6000);
     this.countIndex;
   }
@@ -105,12 +97,15 @@ export class AppComponent implements OnInit {
   }
 
   @HostListener('mousemove', ['$event']) onMouseMove(event: { clientX: any; clientY: any; }) {
-    console.log(this.X = event.clientX, this.Y = event.clientY);
-
+    this.X = event.clientX
+    this.Y = event.clientY
+    this.cursor_X = event.clientX +23
+    this.cursor_Y = event.clientY +23
+    this.tracker = this.X * this.Y - 119
     for (const [iterator, i] of this.arrayPositionGare.entries()) {
-      if (this.Y == i.position_Y && this.X == i.position_x) {
+      if (this.Y > i.position_Y && this.X > i.position_x) {
         this.indexArray = "position_x: " + i.position_x + ", " + "position_Y: " + i.position_Y
-        this.line = iterator + 2
+        this.line = iterator + 3
         this.tre = true
       } else {
         this.tre = false
@@ -129,13 +124,18 @@ export class AppComponent implements OnInit {
   }
 
   playerRecord(eventNamePlayer: any) {
-    if (eventNamePlayer != "" && this.gif != '') {
+    this.doublon = this.listplayer.map(a => a.name == eventNamePlayer)
+    console.log(this.doublon);
+    
+    if (eventNamePlayer != "" && this.gif != '' && !this.doublon[0]) {
       this.namePlayer.push(eventNamePlayer);
       let player: any = new Player(eventNamePlayer, this.score, this.gif);
       this.listplayer?.push(player);
+      this.gifCursor = this.gif
       this.gif = "";
       this.gifFalse = false
     } else {
+      alert('nope déjà utilisé 😃')
       this.gifFalse = false
     }
     this.player = "";
@@ -151,6 +151,7 @@ export class AppComponent implements OnInit {
   countIndex() {
     if (this.listplayer?.length - 1 >= this.index) {
       this.nameActive = this.namePlayer[this.index];
+      this.gifCursor = this.gif
     } else {
       this.index = 0;
       this.nameActive = this.namePlayer[this.index];
@@ -163,14 +164,15 @@ export class AppComponent implements OnInit {
     if (event == this.propResponse) {
       this.good = true;
       setTimeout(() => {
-        this.listplayer?.map((a) =>
+        this.listplayer?.map((a) => {
           a.name == this.nameActive
-            ? { ...new Player(a.name, a.point++, a.gif) }
-            : { ...new Player(a.name, a.point, a.gif) }
-        );
-      }, 200);
+          ? { ...new Player(a.name, a.point++, a.gif) }
+          : { ...new Player(a.name, a.point, a.gif) }},this.gifCursor = this.gif
+        )
+      }, 100);
       this.name = "";
     } else {
+
       this.bad = true;
       this.name = "";
     }

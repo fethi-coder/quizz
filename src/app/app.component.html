@@ -2,6 +2,7 @@
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0" />
 
     <div class="container-reponse">
+        <img [ngStyle]="gifCursor !== '' ? {position:'fixed',height:'30px','width':'30px',left:cursor_X+'px',top:Y+'px',color:'yellow',backgroundColor:'black','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="">
         <p>position Y: {{Y}}</p>
         <p>position X: {{X}}</p>
         <p [ngStyle]="indexArray ? {color:'yellow',backgroundColor:'red'}:{color:'white'}">{{indexArray}}</p>
@@ -10,20 +11,20 @@
             <div class="container-gif" *ngIf="!startGame">
                 <ul *ngFor="let gif of listGif">
                     <li>
-                        <button class="btnGif" (click)="gifPathSend(gif.src)"><img [ngClass]="!gifFalse?'imgGif':'imgGifFalse'"
-                                    [src]="gif.src" alt="" /></button>
+                        <button class="btnGif" (click)="gifPathSend(gif.src)"><img
+                                [ngClass]="!gifFalse?'imgGif':'imgGifFalse'" [src]="gif.src" alt="" /></button>
                     </li>
                 </ul>
             </div>
             <input class="inputListPlayer" name="player" id="" [(ngModel)]="player" placeholder="pseudo joueur" maxlength="14" />
             <button class="submit" (click)="playerRecord(player)">
-                    valider joueur
-                </button>
+                valider joueur
+            </button>
         </div>
         <input class="inputListPlayer" type="text" name="reponse" [value]="name" [(ngModel)]="name" placeholder="réponse" />
         <button class="submit" (click)="reponse(name)" (click)="countIndex()">
-      réponse
-    </button>
+            réponse
+        </button>
         <ng-container *ngFor="let a of arrayPositionGare; let i = index">
             <button [ngStyle]="{
           position: 'fixed',
@@ -45,7 +46,7 @@
     <div class="container-list-player">
         <ul *ngFor="let a of listplayer" class="score">
             <li>
-                <div class="namePlayerGif">{{ a.name }}</div><img class="imgGif" [src]="a.gif" alt="" />
+                <div class="namePlayerGif">{{ a.name }}</div><img class="imgGif2" [src]="a.gif" alt="" />
                 <p [ngStyle]="
             a.name === playerPush
               ? {
