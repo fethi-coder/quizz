@@ -1,14 +1,17 @@
 <section>
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0" />
+    <p class="containerIsreponse" *ngIf="isVoirReponse">bonne réponse : {{Reponse}}</p>
 
     <div class="container-reponse">
-        <img [ngStyle]="gifCursor !== '' ? {position:'fixed',height:'30px','width':'30px',left:X+19+'px',top:Y+19+'px',color:'yellow',backgroundColor:'transparent','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="">
+        <img [ngStyle]="true ? {position:'fixed',height:'30px','width':'30px',left:X+19+'px',top:Y+19+'px',color:'yellow',backgroundColor:'transparent','border-radius':'5px','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="player">
         <p>position Y: {{Y}}</p>
         <p>position X: {{X}}</p>
+        <p>{{ propResponse}}</p>
+        <p *ngIf="isVoirReponse">{{isVoirReponse}}</p>
         <p [ngStyle]="indexArray ? {color:'yellow',backgroundColor:'red'}:{color:'white'}">{{indexArray}}</p>
         <p>lignes : {{line}}</p>
-        <div class="container-player">
-            <div class="container-gif" *ngIf="!startGame">
+        <div *ngIf="!startGame" class="container-player">
+            <div class="container-gif">
                 <ul *ngFor="let gif of listGif">
                     <li>
                         <button class="btnGif" (click)="gifPathSend(gif.src)"><img
@@ -21,7 +24,7 @@
                 valider joueur
             </button>
         </div>
-        <input class="inputListPlayer" type="text" name="reponse" [value]="name" [(ngModel)]="name" placeholder="réponse" />
+        <input [ngStyle]="good?{border:'solid green 3px',content:'bravo'}:{border:'solid black 3px'}" class="inputListPlayer" type="text" name="reponse" [value]="name" [(ngModel)]="name" [placeholder]="name" />
         <button class="submit" (click)="reponse(name)" (click)="countIndex()">
             réponse
         </button>
@@ -33,7 +36,7 @@
           height: 19 + 'px',
           width: 19 + 'px',
           'border-radius': 9 + 'px',
-          border: 'solid 2px rgb(110, 110, 234)',
+          border: 'solid 4px rgb(110, 110, 234)',
           'background-color': 'rgb(255, 192, 192)',
           cursor: a.cursor
         }" (click)="isResponse(a.gare_station)" class="btn-psoition"></button>
@@ -48,7 +51,7 @@
             <li>
                 <div class="namePlayerGif">{{ a.name }}</div><img class="imgGif2" [src]="a.gif" alt="" />
                 <p [ngStyle]="
-            a.name === playerPush
+            a.name === playerPush[0]
               ? {
                   color: 'white',
                   transition: 'all .4s',
@@ -62,5 +65,5 @@
         </ul>
     </div>
     <app-good *ngIf="good" (newItemEvent)="addItem($event)" [playerPush]="playerPush"></app-good>
-    <app-bad *ngIf="bad" (newItemEventBad)="addItemBad($event)" [gifPush]="gifPush"></app-bad>
+    <app-bad *ngIf="bad" (newItemEventBad)="addItemBad($event)"></app-bad>
 </section>

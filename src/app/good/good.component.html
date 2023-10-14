@@ -1,6 +1,13 @@
 <section *ngIf="close">
     <button class="btn-good" (click)="addNewItem()">next<img class="img-btn"
-        src="assets/images/arrow-forward-circle-outline.svg" alt=""></button>
+            src="assets/images/arrow-forward-circle-outline.svg" alt=""></button>
     <img class="artifice" src="assets/images/firework-13.gif">
-    <p>{{text}} {{playerPush}}</p>
+    <article>
+        <p>{{text}}</p>
+        <div class="container-player">
+            <p>{{playerPush[0]}}</p>
+            <img [src]="playerPush[1]" [alt]="playerPush[1]">
+        </div>
+
+    </article>
 </section>

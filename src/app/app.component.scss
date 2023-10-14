@@ -31,9 +31,9 @@
         }
         
         .container-reponse {
-            position: absolute;
+            position: fixed;
             top: 8px;
-            left: 1020px;
+            left: 1080px;
             height: 450px;
             width: 400px;
             background-color: #e6adad;
@@ -100,12 +100,22 @@
             flex-direction: column;
             gap: 12px;
             transition: all .4s;
+            animation: playeranime .6s both;
+        }
+        
+        @keyframes playeranime {
+            from {
+                scale: 0;
+            }
+            to {
+                scale: 1;
+            }
         }
         
         .container-list-player {
-            position: fixed;
+            position: absolute;
             top: 500px;
-            left: 1020px;
+            left: 1080px;
             height: 450px;
             width: 400px;
             display: flex;
@@ -219,13 +229,12 @@
             align-items: center;
             overflow-x: scroll;
             scroll-behavior: auto;
-            gap: 58px;
+            gap: 30px;
             transition: all .4s;
         }
         
         .container-gif ul li {
-            height: 45px;
-            width: 3px;
+            object-fit: cover;
             list-style: none;
         }
         
@@ -239,8 +248,15 @@
         
         .imgGif {
             width: 40px;
-            border-radius: 5px;
+            height: 40px;
+            background-size: cover;
             cursor: pointer;
+        }
+        
+        .imgGif:active {
+            border: solid 2px rgb(225, 80, 177);
+            background-color: greenyellow;
+            border-radius: 12px;
         }
         
         .imgGifFalse {
@@ -295,7 +311,7 @@
         }
         
         .namePlayerGif {
-            transform: translate(-150px);
+            transform: translate(-103px);
             font-size: 2rem;
         }
         
@@ -336,7 +352,28 @@
         
         .imgGif2 {
             height: 45px;
-            transform: translate(-210px);
+            width: 64px;
+            transform: translate(210px);
             object-fit: contain;
-            background-color: transparent;
+            border: solid 2px rgb(255, 43, 184);
+            background-color: rgb(53, 245, 255);
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: -5px 5px 10px #6d38b2, 5px -5px 10px #8544da;
+        }
+        
+        .containerIsreponse {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 50px;
+            left: 430px;
+            width: 600px;
+            height: 90px;
+            background-color: #646eda;
+            color: white;
+            border: 3px solid white;
+            font-size: 1.4rem;
+            transition: all .7s;
         }

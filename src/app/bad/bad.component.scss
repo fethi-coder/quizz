@@ -17,20 +17,19 @@ section {
     height: 50%;
     opacity: 9;
     object-fit: cover;
-    border: solid 3px red;
-    animation-name: slidein;
+    border: solid 12px rgb(250, 102, 102);
+    border-radius: 12px;
+    animation: slidein .4s both;
 }
 
 @keyframes slidein {
     from {
-        transform: translateX(-100%);
-        margin-left: 100%;
-        width: 300%;
+        width: 10%;
+        height: 10%;
     }
     to {
-        transform: translateX(50%);
-        margin-left: 0%;
-        width: 100%;
+        width: 50%;
+        height: 50%;
     }
 }
 
@@ -47,7 +46,7 @@ section {
     font-size: 18px;
     gap: 22px;
     border-radius: 4vh;
-    border: none;
+    border: solid 3px black;
     cursor: pointer;
     animation: btnAnime infinite 2s;
 }

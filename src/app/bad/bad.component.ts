@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { environment } from 'src/environments/environment.development';
 import { BrowserModule } from '@angular/platform-browser';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-bad',
@@ -12,21 +13,36 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class BadComponent implements OnInit {
   gif: string = ''
-  session:any
+  session: any
 
   @Output() newItemEventBad = new EventEmitter<any>();
   iSbad: String = "";
 
-  @Input() gifPush:any
+  @Input() gifPush: any
   close: boolean = true;
+  arrayGif: any[] = [
+    "assets/images/Aneu.gif",
+    "assets/images/giphy.gif",
+    "assets/images/nope-pic-4.gif.webp",
+    "assets/images/Aneu.gif",
+    "assets/images/nope-pic-8.gif.webp",
+    "assets/emoj/train.gif"
+  ];
+
+  max = this.arrayGif.length;
 
   ngOnInit(): void {
-    setInterval(() => { this.close = false }, 4000)
+    this.gifIndex()
   }
 
   addNewItem() {
     let iSbad = "false"
     this.newItemEventBad.emit(iSbad);
+  }
+
+  gifIndex() {
+    setTimeout(() => { this.gifPush = String(this.arrayGif[Math.floor(Math.random() * this.max)]) }, 100)
+    return this.gifPush;
   }
 
 }

@@ -212,18 +212,18 @@ export const environment = {
         { position_x: 836, position_Y: 851, gare_station: "eee", cursor: "pointer" },
     ],
     listGif: [
-        { src: "assets/emoj/8583-yoyomonkey-thinkinghard.gif" },
-        { src: "assets/emoj/spongebob-pageflip.gif" },
-        { src: "assets/emoj/cicimonkey-blush.gif" },
-        { src: "assets/emoj/nyanparrot.gif" },
-        { src: "assets/emoj/MegurineLuka_Applause1.gif" },
-        { src: "assets/emoj/catgirlears.gif" },
-        { src: "assets/emoj/MegurineLuka_Applause1.gif" },
-        { src: "assets/emoj/giphy1.gif" },
-        { src: "assets/emoj/giphy2.gif" },
-        { src: "assets/emoj/giphy3.gif" },
-        { src: "assets/emoj/giphy.gif" },
-        { src: "assets/emoj/no.gif" },
-        { src: "assets/emoj/chaton.gif" }
+        { index: 0, src: "assets/emoj/8583-yoyomonkey-thinkinghard.gif" },
+        { index: 1, src: "assets/emoj/spongebob-pageflip.gif" },
+        { index: 2, src: "assets/emoj/cicimonkey-blush.gif" },
+        { index: 3, src: "assets/emoj/nyanparrot.gif" },
+        { index: 4, src: "assets/emoj/MegurineLuka_Applause1.gif" },
+        { index: 5, src: "assets/emoj/catgirlears.gif" },
+        { index: 6, src: "assets/emoj/MegurineLuka_Applause1.gif" },
+        { index: 7, src: "assets/emoj/giphy1.gif" },
+        { index: 8, src: "assets/emoj/giphy2.gif" },
+        { index: 9, src: "assets/emoj/giphy3.gif" },
+        { index: 10, src: "assets/emoj/giphy.gif" },
+        { index: 11, src: "assets/emoj/no.gif" },
+        { index: 12, src: "assets/emoj/chaton.gif" }
     ]
 }

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-good',
@@ -16,15 +17,17 @@ export class GoodComponent implements OnInit{
   @Output() newItemEvent = new EventEmitter<string>();
   @Input() playerPush:any
   session?: string | null;
+  inter = interval(4000)
 
-  ngOnInit(): void {
-    console.log("fdszfef");
-    
-    setInterval(() => { this.close = false }, 4000)
+  ngOnInit(): void {    
+this.inter.subscribe(()=>{
+      this.close = false;
+      this.newItemEvent.emit("false");
+    })
   }
 
   addNewItem() {
-    let iSgood = "false"
-    this.newItemEvent.emit(iSgood);
+    this.playerPush = []
+    this.newItemEvent.emit("false");
   }
 }
