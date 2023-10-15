@@ -47,10 +47,12 @@
         <button (click)="restart()">nouvelle partie</button>
     </div>
     <div class="container-list-player">
-        <ul *ngFor="let a of listplayer" class="score">
-            <li>
-                <div class="namePlayerGif">{{ a.name }}</div><img class="imgGif2" [src]="a.gif" alt="" />
-                <p [ngStyle]="
+        <ng-container *ngIf="listplayer.length !== 0,then one,else two"></ng-container>
+        <ng-template #one>
+            <ul *ngFor="let a of listplayer" class="score">
+                <li>
+                    <div class="namePlayerGif">{{ a.name }}</div><img class="imgGif2" [src]="a.gif" alt="" />
+                    <p [ngStyle]="
             a.name === playerPush[0]
               ? {
                   color: 'white',
@@ -59,10 +61,14 @@
                 }
               : { color: 'white', transition: 'all .4s' }
           ">
-                    {{ a.point }} point
-                </p>
-            </li>
-        </ul>
+                        {{ a.point }} point
+                    </p>
+                </li>
+            </ul>
+        </ng-template>
+        <ng-template #two>
+            <p class="para">controller city</p>
+        </ng-template>
     </div>
     <app-good *ngIf="good" (newItemEvent)="addItem($event)" [playerPush]="playerPush"></app-good>
     <app-bad *ngIf="bad" (newItemEventBad)="addItemBad($event)"></app-bad>
