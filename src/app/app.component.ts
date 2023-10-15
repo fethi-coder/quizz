@@ -57,7 +57,6 @@ export class AppComponent implements OnInit,OnDestroy {
   X: any;
   Y: any;
   indexArray: any;
-  tre?: boolean = true;
   line?: number
   tracker: number = 0;
   gifCursor: string = '';
@@ -65,6 +64,7 @@ export class AppComponent implements OnInit,OnDestroy {
   cursor_Y: any;
   doublon = signal<any>([]);
   gifCursorObs =interval(200) 
+  visiblecity:boolean = false
 
 
   Reponse?: string;
@@ -99,18 +99,11 @@ export class AppComponent implements OnInit,OnDestroy {
     this.X = event.clientX
     this.Y = event.clientY
     this.tracker = this.X * this.Y - 119
-    let ineee = 0
     for (const [iterator, i] of this.arrayPositionGare.entries()) {
-      ++ineee
       if (i.position_Y <= this.Y  && i.position_x <= this.X ) {
        this.line = 0
-        this.indexArray = "position_x: " + i.position_x + ", " + "position_Y: " + i.position_Y  
         this.line = iterator + 4
-        this.tre = true
-      } else {
-        this.tre = false
       }
-
     }
   }
 
@@ -134,9 +127,10 @@ export class AppComponent implements OnInit,OnDestroy {
       this.namePlayer.push(eventNamePlayer);
       let player: Player = new Player(eventNamePlayer, this.score,this.gif,true);
       this.listplayer?.push(player);
+      this.listGifCss()
       this.gifFalse = false
     } else {
-      alert('nope déjà utilisé 😃')
+      alert('=> nope déjà utilisé 😃\n=> le nombre de joueur est limité a 5 participants 😠')
       this.gifFalse = false
     }
     this.player = "";
@@ -183,6 +177,7 @@ export class AppComponent implements OnInit,OnDestroy {
     }
     this.name = "";
     this.propResponse =""
+    setTimeout(() => { this.isVoirReponse = false },1000)
  }
 
   restart() {
@@ -190,11 +185,19 @@ export class AppComponent implements OnInit,OnDestroy {
     window.location.reload()
   }
 
-voirReponse(){
-  
-}
-
-  ngOnDestroy(): void {
+  visibleCity(){
+this.visiblecity = !this.visiblecity
+console.log(this.visiblecity);
 
   }
+
+  listGifCss(){
+    this.listplayer.forEach((a,index)=>{
+      console.log(this.listplayer[index]);
+      
+    })
+    console.log(this.listplayer[0]);
+  }
+
+  ngOnDestroy(): void {}
 }

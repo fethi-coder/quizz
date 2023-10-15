@@ -8,6 +8,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0.377);
     transition: all .4s;
 }
@@ -89,4 +90,35 @@ section {
 
 .img-btn {
     height: 90%;
+}
+
+.container-reponse {
+    top: 45px;
+    position: absolute;
+    width: 25%;
+    height: 90px;
+    border-radius: 12px;
+    border: solid 4px black;
+    gap: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    font-size: xx-large;
+    color: rgb(32, 30, 30);
+    animation: reponseanime .5s both;
+}
+
+@keyframes reponseanime {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(45px);
+    }
+}
+
+.container-reponse img {
+    width: 45px;
+    height: 45px;
 }

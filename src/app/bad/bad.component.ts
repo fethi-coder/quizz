@@ -20,6 +20,7 @@ export class BadComponent implements OnInit, OnDestroy{
   iSbad: String = "";
 
   @Input() gifPush: any
+  @Input() Reponse:string | undefined
   close: boolean = true;
   arrayGif: any[] = [
     "assets/images/Aneu.gif",
@@ -34,6 +35,8 @@ export class BadComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.gifIndex()
+    console.log(this.Reponse);
+    
   }
 
   addNewItem() {

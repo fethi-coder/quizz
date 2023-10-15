@@ -1,4 +1,10 @@
 <section *ngIf="close">
+    <div class="container-reponse">
+        <img src="assets/images/heart.webp" alt="">
+        <p *ngIf="Reponse !== ''" class="repoonse">{{Reponse}}</p>
+        <img src="assets/images/heart.webp" alt="">
+    </div>
+
     <img class="bad-img" [src]="gifPush" alt="">
     <button class="btn-bad" (click)="addNewItem()"> looser X <img class="img-btn" [src]="" alt=""></button>
 </section>
