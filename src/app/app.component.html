@@ -9,12 +9,24 @@
                 <p> </p>
             </button>
         </div>
-        <div class="container-btn-carte">
-            <button (click)="visibleCity()">
-                <img class="btn-img-carte"  src="assets/images/map-outline.svg" alt="">
-                <p> </p>
-            </button>
-        </div>
+        <ng-container *ngIf="!startGame;then cartetrue;else cartefalse"></ng-container>
+        <ng-template #cartetrue>
+            <div class="container-btn-carte">
+                <button (click)="visibleCity()">
+        <img class="btn-img-carte" src="assets/images/map-outline.svg" alt="">
+        <p> </p>
+    </button>
+            </div>
+        </ng-template>
+        <ng-template #cartefalse>
+            <H3>à toi de jouer</H3>
+            <div class="container-player-actuel" *ngIf="playerActuel">
+                <img class="player-actuel-img" [src]="playerActuel?.gif" alt="">
+                <p>{{playerActuel?.name}}</p>
+            </div>
+
+        </ng-template>
+
         <div *ngIf="!startGame" class="container-player">
 
             <div class="container-gif">

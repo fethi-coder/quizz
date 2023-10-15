@@ -1,11 +1,13 @@
 import { PlayerModel } from "./player.model"
 
 export class Player {
+    id:number =0
     name: string = ''
     point: number = 0
     gif:string =""
     isPresent = false
-    constructor(name: string, point: number,gif:string,isPresent:boolean) {
+    constructor(id:number,name: string, point: number,gif:string,isPresent:boolean) {
+        this.id = id
         this.name = name
         this.point = point
         this.gif = gif
