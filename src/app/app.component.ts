@@ -156,11 +156,11 @@ export class AppComponent implements OnInit,OnDestroy {
     this.index++;
   }
 
-  reponse(event: any) {
+  reponse(event: String) {
     this.playerPush =[]
     this.isVoirReponse = false
-    if (event == this.propResponse && this.propResponse ) {
-      this.name =""
+    if (event.toLowerCase() == this.propResponse?.toLowerCase() && !this.propResponse ) {
+    this.name =""
       this.good = true;
       setTimeout(() => {
         this.listplayer?.map((a,e) => {   
@@ -181,12 +181,9 @@ export class AppComponent implements OnInit,OnDestroy {
       this.name = "";
       this.isVoirReponse = true
     }
-    setTimeout(() => { this.isVoirReponse = false },1500)
     this.name = "";
     this.propResponse =""
-    console.log(this.name);
-    
-  }
+ }
 
   restart() {
     sessionStorage.clear()

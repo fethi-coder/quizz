@@ -4,13 +4,11 @@
 
     <div class="container-reponse">
         <img [ngStyle]="true ? {position:'fixed',height:'30px','width':'30px',left:X+19+'px',top:Y+19+'px',color:'yellow',backgroundColor:'transparent','border-radius':'5px','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="player">
-        <p>position Y: {{Y}}</p>
-        <p>position X: {{X}}</p>
-        <p>{{ propResponse}}</p>
-        <p *ngIf="isVoirReponse">{{isVoirReponse}}</p>
-        <p [ngStyle]="indexArray ? {color:'yellow',backgroundColor:'red'}:{color:'white'}">{{indexArray}}</p>
-        <p>lignes : {{line}}</p>
+        <div class="container-btn-restart">
+            <button (click)="restart()"><img class="btn-img-restart" src="assets/images/game-controller-outline.svg" alt=""> <p>  </p></button>
+        </div>
         <div *ngIf="!startGame" class="container-player">
+
             <div class="container-gif">
                 <ul *ngFor="let gif of listGif">
                     <li>
@@ -43,9 +41,7 @@
         </ng-container>
     </div>
 
-    <div class="container-btn-restart">
-        <button (click)="restart()">nouvelle partie</button>
-    </div>
+
     <div class="container-list-player">
         <ng-container *ngIf="listplayer.length !== 0,then one,else two"></ng-container>
         <ng-template #one>
@@ -67,7 +63,7 @@
             </ul>
         </ng-template>
         <ng-template #two>
-            <p class="para">controller city</p>
+            <p class="para"></p>
         </ng-template>
     </div>
     <app-good *ngIf="good" (newItemEvent)="addItem($event)" [playerPush]="playerPush"></app-good>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { environment } from 'src/environments/environment.development';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +11,8 @@ import { timeout } from 'rxjs';
   templateUrl: './bad.component.html',
   styleUrls: ['./bad.component.scss']
 })
-export class BadComponent implements OnInit {
+export class BadComponent implements OnInit, OnDestroy{
+ 
   gif: string = ''
   session: any
 
@@ -43,6 +44,11 @@ export class BadComponent implements OnInit {
   gifIndex() {
     setTimeout(() => { this.gifPush = String(this.arrayGif[Math.floor(Math.random() * this.max)]) }, 100)
     return this.gifPush;
+  }
+
+  ngOnDestroy(): void {
+    this.gifIndex()
+    this.addNewItem()
   }
 
 }
