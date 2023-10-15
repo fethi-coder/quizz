@@ -159,7 +159,7 @@ export class AppComponent implements OnInit,OnDestroy {
   reponse(event: String) {
     this.playerPush =[]
     this.isVoirReponse = false
-    if (event.toLowerCase() == this.propResponse?.toLowerCase() && !this.propResponse ) {
+    if (event.toLowerCase() == this.propResponse?.toLowerCase() && this.propResponse ) {
     this.name =""
       this.good = true;
       setTimeout(() => {
