@@ -119,6 +119,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   gifPathSend(gifevent: string) {
     this.gif = gifevent;
+    this.visiblecity = false
   }
 
   playerRecord(eventNamePlayer: any) {
@@ -166,7 +167,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.playerPush = [a.name, a.gif];
           } else {
             this.name = ""
-           new Player(a.id, a.name, a.point, a.gif, false)
+           let giffalse = new Player(a.id, a.name, a.point, a.gif, false)
          }
         },)
       }, 100);
@@ -189,29 +190,26 @@ export class AppComponent implements OnInit, OnDestroy {
 
   visibleCity() {
     this.visiblecity = !this.visiblecity
-    console.log(this.visiblecity);
-
   }
 
-  listGifCss(data: any) {
-    let findid = 0
-    console.log(data);
-    
-  this.listplayer.forEach((a) => {
+
+    listGifCss(data: any) {
+      let findid = 0
+   this.listplayer.forEach((a) => {
         if (a.name == data) {
           findid = a.id + 1
           if (findid >= this.listplayer.length) {
             this.playerActuel = this.listplayer.find(b => b.id == 0)
             console.log(this.playerActuel);
-            
+
           } else {
             this.playerActuel = this.listplayer.find(b => b.id == findid)
             console.log(this.playerActuel);
           }
         }
       }
-    )
-  }
+      )
+    }
 
   ngOnDestroy(): void { }
 }

@@ -139,12 +139,14 @@
         .container-player-actuel .player-actuel-img {
             width: 50px;
             height: 50px;
+            border-radius: 25px;
+            border: solid 3px white;
         }
         
         .container-player-actuel p {
             text-align: center;
             color: black;
-            font-size: 2rem;
+            font-size: 1.4rem;
         }
         
         .container-list-player {
@@ -408,7 +410,7 @@
         
         .container-btn-restart button p {
             opacity: 0;
-            margin-left: -10px;
+            margin-left: -15px;
         }
         
         .container-btn-restart button p:hover {
@@ -466,7 +468,7 @@
         
         .container-btn-carte button p {
             opacity: 0;
-            margin-left: -10px;
+            margin-left: -20px;
         }
         
         .container-btn-carte button:hover {
