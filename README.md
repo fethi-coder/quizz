@@ -1,5 +1,13 @@
 # Quizz
 
+bon voilà un jeu que j'ai développé pour un pote qui passe des tests pour devenir contrôleur à la sncf.
+N'hésitez pas tester et le partager.
+pour les régles choisissent un avatar, le nom du joueur est unique et la partie n'a pas de limite de point.
+Vous devez deviner le maximum de gare française.
+Vous pouvez jouer à 5 joueurs maximum.
+Pour le reste faite vous plaisir.
+;)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
 ## Development server
