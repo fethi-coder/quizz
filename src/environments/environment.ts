@@ -194,6 +194,7 @@ export const environment = {
         { index: 9, src: "assets/emoj/giphy3.gif" },
         { index: 10, src: "assets/emoj/giphy.gif" },
         { index: 11, src: "assets/emoj/no.gif" },
-        { index: 12, src: "assets/emoj/chaton.gif" }
+        { index: 12, src: "assets/emoj/chaton.gif" },
+        { index: 13, src: "assets/images/e4ab152ecab6d50ac3f7e631876eb895.gif" }
     ]
 }

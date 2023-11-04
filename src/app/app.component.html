@@ -1,8 +1,8 @@
 <section>
-
+    <div class="banner"></div>
     <img src="assets/images/carte-1.png" alt="carte" ng-mousemove="count = count + 1" ng-init="count=0" />
     <div class="container-reponse">
-        <img [ngStyle]="true ? {position:'fixed',height:'30px','width':'30px',left:X+19+'px',top:Y+19+'px',color:'yellow',backgroundColor:'transparent','border-radius':'5px','z-index':'100'}:{display:'none'}" [src]="gifCursor" alt="player">
+        <img [ngStyle]="true ? {position:'fixed',height:'30px','width':'30px',left:X+19+'px',top:Y+19+'px',color:'yellow',backgroundColor:'transparent','border-radius':'5px','z-index':'100'}:{display:'none'}" [src]="gifCursor" [alt]="player">
         <div class="container-btn-restart">
             <button (click)="restart()"><img class="btn-img-restart" src="assets/images/game-controller-outline.svg"
                     alt="">
@@ -13,9 +13,9 @@
         <ng-template #cartetrue>
             <div class="container-btn-carte">
                 <button (click)="visibleCity()">
-        <img class="btn-img-carte" src="assets/images/map-outline.svg" alt="">
-        <p> </p>
-    </button>
+                    <img class="btn-img-carte" src="assets/images/map-outline.svg" alt="">
+                    <p> </p>
+                </button>
             </div>
         </ng-template>
         <ng-template #cartefalse>
@@ -30,7 +30,7 @@
         <div *ngIf="!startGame" class="container-player">
 
             <div class="container-gif">
-                <ul *ngFor="let gif of listGif">
+                <ul *ngFor="let gif of listGif,let i=index">
                     <li>
                         <button class="btnGif" (click)="gifPathSend(gif.src)"><img
                                 [ngClass]="!gifFalse?'imgGif':'imgGifFalse'" [src]="gif.src" alt="" /></button>
@@ -57,8 +57,15 @@
           border: 'solid 4px rgb(110, 110, 234)',
           'background-color': 'rgb(255, 192, 192)',
           cursor: a.cursor
-        }" (click)="isResponse(a.gare_station)" class="btn-psoition">
+        }" (click)="isResponse(a.gare_station,i)" class="btn-psoition">
                 <p class="btn-psoition-p" *ngIf="visiblecity">{{a.gare_station}}</p>
+                <p *ngFor="let item of ArrayConvert" [ngStyle]="item == i ? 
+                {'background-color':'#8010f0','border-radius': 12 + 'px',height: 25 + 'px',
+          width: 25 + 'px',position: 'fixed',
+          left: a.position_x - 7 + 'px',
+          top: a.position_Y - 7 + 'px',
+          border: 'solid 4px rgb(110, 110, 234)','transform':'translateX(-2px)'}:{'display':'none'}">
+                </p>
             </button>
         </ng-container>
     </div>

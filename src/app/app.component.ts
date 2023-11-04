@@ -7,8 +7,9 @@ import { BadComponent } from "./bad/bad.component";
 import { Player } from "src/model/player";
 import { PositionModel } from "src/model/position";
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
 import { interval } from 'rxjs';
+import { BrowserModule, Title } from "@angular/platform-browser";
+import { log } from "console";
 
 
 @Component({
@@ -19,12 +20,14 @@ import { interval } from 'rxjs';
     FormsModule,
     GoodComponent,
     BadComponent,
-    NgFor,
+    NgFor
   ],
+  providers:[Title],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit, OnDestroy {
+[x: string]: any;
 
   title = "quizz";
   name: any = "";
@@ -59,17 +62,20 @@ export class AppComponent implements OnInit, OnDestroy {
   indexArray: any;
   line?: number
   tracker: number = 0;
-  gifCursor: string = '';
+  gifCursor: string = "assets/emoj/bullet.png"
   cursor_X: any;
   cursor_Y: any;
   doublon = signal<any>([]);
   gifCursorObs = interval(200)
   visiblecity: boolean = false
   playerActuel: any
-
-
   Reponse?: string;
   isVoirReponse: boolean = false;
+  display:any =[]
+  ArrayConvert:any = []
+
+
+  constructor(private titles:Title){}
 
   ngOnInit(): void {
     this.listGif = environment.listGif
@@ -107,7 +113,13 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  isResponse(event: string) {
+  isResponse(event: string,index:number) {
+    console.log(index);
+    this.display.push(index)
+    this.ArrayConvert = [...new Set(this.display)]
+    
+    console.log(this.display);
+     this.titles.setTitle("nouvelle partie")
     if (this.listplayer.length !== 0) {
       this.startGame = true;
       this.name = ""
@@ -123,17 +135,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   playerRecord(eventNamePlayer: any) {
-    if (this.listplayer.length < 5 && !this.namePlayer.includes(eventNamePlayer)) {
+    if (this.listplayer.length < 5 && !this.namePlayer.includes(eventNamePlayer) && this.gif !== "" ) {
       this.namePlayer.push(eventNamePlayer);
       let player: Player = new Player(this.index++, eventNamePlayer, this.score, this.gif, false);
       this.listplayer?.push(player);
       this.gifFalse = false
     } else {
-      alert('=> nope déjà utilisé 😃\n=> le nombre de joueur est limité a 5 participants 😠')
+      alert('=> nope déjà utilisé 😃\n=> le nombre de joueur est limité a 5 participants 😠 \n=> vous devez choisir une image pour commencer la partie 😝')
       this.gifFalse = false
     }
     this.player = "";
-    this.gifFalse;
     this.listGifCss
   }
 
@@ -152,7 +163,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.index++;
   }
 
-  reponse(event: String) {
+  reponse(event: string) {
+    console.log(this.display);
+    
     this.playerPush = []
     this.isVoirReponse = false
     if (event.toLowerCase() == this.propResponse?.toLowerCase() && this.propResponse) {
@@ -161,13 +174,13 @@ export class AppComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.listplayer?.map((a) => {
           if (a.name == this.nameActive) {
-            let gif = new Player(a.id, a.name, a.point++, a.gif, false)
+            let gif = new Player(a.id, a.name, a.point++, a.gif, true)
             sessionStorage.setItem('gif', gif.gif)
             this.name = ""
             this.playerPush = [a.name, a.gif];
           } else {
             this.name = ""
-           let giffalse = new Player(a.id, a.name, a.point, a.gif, false)
+           let giffalse = new Player(a.id, a.name, a.point, a.gif, true)
          }
         },)
       }, 100);
@@ -200,16 +213,16 @@ export class AppComponent implements OnInit, OnDestroy {
           findid = a.id + 1
           if (findid >= this.listplayer.length) {
             this.playerActuel = this.listplayer.find(b => b.id == 0)
-            console.log(this.playerActuel);
-
+            this.titles.setTitle(this.playerActuel.name)
           } else {
             this.playerActuel = this.listplayer.find(b => b.id == findid)
-            console.log(this.playerActuel);
+            this.titles.setTitle(this.playerActuel.name)
           }
         }
       }
       )
     }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void { 
+  }
 }

@@ -33,7 +33,7 @@
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "assets": [
-                            "src/favicon.ico",
+
                             "src/assets"
                         ],
                         "styles": [
@@ -45,13 +45,13 @@
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "5000kb",
+                                    "maximumError": "10mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumWarning": "20kb",
+                                    "maximumError": "40kb"
                                 }
                             ],
                             "outputHashing": "all"
@@ -63,10 +63,16 @@
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true,
-                            "fileReplacements": [{
+                            "fileReplacements": [
+                              {
                                 "replace": "src/environments/environment.development.ts",
                                 "with": "src/environments/environment.development.ts"
-                            }]
+                              },
+                              {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.development.ts"
+                              }
+                            ]
                         }
                     },
                     "defaultConfiguration": "production"
@@ -99,8 +105,8 @@
                         "tsConfig": "tsconfig.spec.json",
                         "inlineStyleLanguage": "scss",
                         "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/city!2.ico"
                         ],
                         "styles": [
                             "src/styles.scss"
